@@ -20,3 +20,12 @@ def addTwoNumbers(self, l1, l2):
         l1 = l1.next if l1 else None
         l2 = l2.next if l2 else None
     return dummy_head.next
+# 测试用例
+if __name__ == "__main__":
+    l1 = NodeList(2, NodeList(4, NodeList(3)))
+    l2 = NodeList(5, NodeList(6, NodeList(4)))
+    result = addTwoNumbers(l1, l2)
+    print("Result:")
+    while result:
+        print(result.val, end=" ")
+        result = result.next
