@@ -5,11 +5,16 @@
 '''
 class Solution:
     def twoSum(self, nums, target):
-        hashtable = {}    # 哈希表，key为元素，value为元素的索引
-        for i, num in enumerate(nums):    # 遍历数组中的每个元素
-            if target - num in hashtable:    # 如果目标值减去当前元素的差值在哈希表中存在，则返回它们的索引
-                return [hashtable[target - num], i]    # 返回两个元素的索引
-            hashtable[nums[i]] = i    # 将当前元素及其索引加入哈希表
+        # 哈希表，key为元素，value为元素的索引
+        hashtable = {}   
+        # 遍历数组中的每个元素
+        for i, num in enumerate(nums):   
+            # 如果目标值减去当前元素的差值在哈希表中存在，则返回它们的索引
+            if target - num in hashtable: 
+                # 返回两个元素的索引
+                return [hashtable[target - num], i]    
+            # 将当前元素及其索引加入哈希表
+            hashtable[nums[i]] = i    
         return [] 
 # 测试用例
 if __name__ == '__main__':
