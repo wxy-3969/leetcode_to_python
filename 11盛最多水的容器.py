@@ -18,7 +18,7 @@ class Solution:
                 current_height = height[left]  # 记录当前较小的高度值
                 left += 1
                 while left < right and height[left] <= current_height:
-                    # 当左指针右移后，若新位置高度不大于之前记录的较小高度，继续右移左指针
+                    # 当左指针右移,若新位置高度不大于之前记录的较小高度，继续右移左指针
                     left += 1  
             else:
                 current_height = height[right]
