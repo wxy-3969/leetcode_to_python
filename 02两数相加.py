@@ -4,37 +4,41 @@
 你可以假设除了数字 0 之外，这两个数都不会以 0 开头。
 '''
 
-class NodeList:
+from typing import Optional
+
+class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+'''
+以上代码只是为了在本地环境中使用,因为LeetCode的测试环境需要使用其内部定义的ListNode类,实际提交时只需要使用下面代码块即可。
+'''
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = curr = ListNode(0)
+        carry = 0
         
-def addTwoNumbers(self, l1, l2):
-    dummy_head = NodeList()
-    current = dummy_head    # 初始化一个哑节点，用于返回结果链表的头部
-    carry = 0
-    while l1 or l2 or carry:
-        val1 = l1.val if l1 else 0
-        val2 = l2.val if l2 else 0
-        # 先计算总和，包括进位
-        total = val1 + val2 + carry
-        carry = total // 10
-        # 创建新节点并更新当前节点的值
-        current.next = NodeList(total % 10)
-        current = current.next
+        while l1 or l2 or carry:
+            val = carry
+            if l1:
+                val += l1.val
+                l1 = l1.next
+            if l2:
+                val += l2.val
+                l2 = l2.next
+            
+            carry = val // 10
+            curr.next = ListNode(val % 10)
+            curr = curr.next
         
-        # 移动l1和l2指针到下一个节点（如果存在）
-        l1 = l1.next if l1 else None
-        l2 = l2.next if l2 else None
-    return dummy_head.next
-
-# 测试用例
-if __name__ == "__main__":
-    l1 = NodeList(2, NodeList(4, NodeList(3)))
-    l2 = NodeList(5, NodeList(6, NodeList(4)))
-    result = addTwoNumbers(l1, l2)
-    print("Result:")
+        return dummy.next
+# 测试
+if __name__ == '__main__':
+    solution = Solution()
+    l1 = ListNode(2, ListNode(4, ListNode(3)))
+    l2 = ListNode(5, ListNode(6, ListNode(4)))
+    result = solution.addTwoNumbers(l1, l2)
     while result:
         print(result.val, end=" ")
         result = result.next
-
+        
