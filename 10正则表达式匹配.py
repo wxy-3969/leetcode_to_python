@@ -23,7 +23,7 @@ class Solution:
         for i in range(1, m + 1):
             for j in range(1, n + 1):
                 if p[j - 1]!= '*':
-                    dp[i][j] = dp[i - 1][j - 1] and match(i, j)    # 当前字符非'*'，依赖前一个字符匹配情况及整体匹配情况
+                    dp[i][j] = dp[i - 1][j - 1] and match(i, j)    # 当前字符非'*',依赖前一个字符匹配情况及整体匹配情况
                 else:
                     # 当前字符是'*'，分两种情况处理
                     dp[i][j] = dp[i][j - 2]  # '*'匹配零个前面元素的情况
