@@ -5,18 +5,14 @@
 '''
 class Solution:
     def twoSum(self, nums, target):
-        # 哈希表，key为元素，value为元素的索引
-        hashtable = {}   
-        # 遍历数组中的每个元素
-        for i, num in enumerate(nums):   
-            # 如果目标值减去当前元素的差值在哈希表中存在，则返回它们的索引
-            if target - num in hashtable: 
-                # 返回两个元素的索引
-                return [hashtable[target - num], i]    
-            # 将当前元素及其索引加入哈希表
-            hashtable[nums[i]] = i    
-        return [] 
-# 测试用例
+        num_dict = {}    # 创建一个字典，用于存储每个元素及其对应的索引
+        for i, num in enumerate(nums):
+            complement = target - num
+            if complement in num_dict:    # 如果目标元素在字典中存在，则返回它们的索引
+                return [num_dict[complement], i]
+            num_dict[num] = i
+        return []
+# 测试
 if __name__ == '__main__':
     solution = Solution()
     print(solution.twoSum([2, 7, 11, 15], 9))
